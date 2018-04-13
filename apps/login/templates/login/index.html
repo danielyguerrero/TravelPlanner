@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <title>Login and Register</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'login/css/index.css' %}" charset="utf-8"  />
+</head>
+
+<body>
+    <div class="wrapper">
+
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <h1>Welcome User!</h1>
+        <form class="topform" action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+
+            <h3>Register</h3>
+            <p>Name:</p>
+            <input type="text" name="name" />
+            <p>Username:</p>
+            <input type="text" name="username" />
+            <p>Password:</p>
+            <input type="password" name="password" />
+            <p>Confirm PW:</p>
+            <input type="password" name="password_confirmation" />
+            <p class="btnpar">
+                <input type="submit" value="Register" />
+            </p>
+        </form>
+
+        <form class="btform" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <h3>Login</h3>
+            <p>Username:</p>
+            <input type="text" name="username" />
+            <p>Password:</p>
+            <input type="password" name="password" />
+            <p class="btnpar">
+                <input type="submit" value="Login" />
+            </p>
+        </form>
+    </div>
+    <br>
+    <p><span style="color:red">Please log in or register to set up an appointment</span></p>
+</body>
+
+</html>

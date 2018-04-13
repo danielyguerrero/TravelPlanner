@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Your Appointments</title>
+     {% load staticfiles %}
+     <!-- Bootstrap -->
+          <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="{% static 'travelplanner/css/index.css' %}" charset="utf-8"  />
+</head>
+<body>
+<!-- ===================    NAVBAR    ===================-->
+     <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand"><h1>Welcome, {{ user.name }}!</h1></a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="travels/add">Add Travel Plan</a></li>
+                <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
+            </ul>
+        </div>
+    </nav> 
+<!-- ===================   END NAVBAR    ===================-->
+<div class="wrapper">
+        <h4>Your Trip Schedules</h4>
+        <div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Destination</th>
+                        <th>Travel Start Date</th>
+                        <th>Travel End Date</th>
+                        <th>Plan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for trip in joined_trips %}
+                    <tr>
+                        <td><a href='travels/destination/{{trip.id}}'> {{ trip.destination }}</a></td>
+                        <td>{{ trip.travel_date_from }}</td>
+                        <td>{{ trip.travel_date_to }}</td>
+                        <td>{{ trip.description }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <br>
+        <br>
+        <h4>Other User's Travel Plans</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Destination</th>
+                    <th>Travel Start Date</th>
+                    <th>Travel End Date</th>
+                    <th>Do You Want to Join?</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for trip in other_trips %}
+                <tr>
+                    <td>{{ trip.added_by.name }}</td>
+                    <td><a href='travels/destination/{{trip.id}}'> {{ trip.destination }}</a></td>
+                    <td>{{ trip.travel_date_from }}</td>
+                    <td>{{ trip.travel_date_to }}</td>
+                    <td><form action="{% url 'join_trip' trip_id=trip.id %}" class="join" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Join</button>
+                    </form></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+</div>
+
+</body>
+</html>
+
+
+
+

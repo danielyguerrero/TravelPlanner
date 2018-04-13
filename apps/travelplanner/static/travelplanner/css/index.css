@@ -1,0 +1,36 @@
+body {
+	text-align: center;
+	background-color: #cbcbcb;
+}
+h1 {
+	margin:0;
+}
+h4{
+	margin:10px;
+}
+.navbar{
+
+}
+.wrapper{
+	height: 650px;
+	width: 800px;
+	padding: 10px;
+	margin-top: 60px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: white;
+	font-size: 20px;
+	border-radius: 41px;
+}
+
+table{
+	margin-right: auto;
+	margin-left: auto;
+
+}
+form{
+	margin: 20px;
+}
+button{
+	margin-bottom: 25px;
+}

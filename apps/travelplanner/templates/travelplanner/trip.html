@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Destination Information</title>
+	{% load staticfiles %}
+ 	<!-- Bootstrap -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="{% static 'travelplanner/css/trip.css' %}" charset="utf-8"  />
+</head>
+<body>
+	<!-- =========    navbar    ============ -->
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="{% url 'dashboard' %}">Home</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
+			</ul>
+		</div>
+	</nav> 
+	<div class="wrapper">
+		<h1>{{ trip.destination }}</h1>
+		<p>Planned By: {{ trip.added_by.name }}</p>
+		<p>Description: {{ trip.description }}</p>
+		<p>Travel Date From: {{ trip.travel_date_from }}</p>
+		<p>Travel Date To: {{ trip.travel_date_to }}</p>
+
+		<h2>Other users' joining the trip:</h2>
+		{% for user in users %}
+			{{ user.name }}
+		{% endfor %}
+	</div>
+
+</body>
+</html>

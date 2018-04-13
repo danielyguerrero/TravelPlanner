@@ -1,0 +1,16 @@
+body {
+	background-color: #cbcbcb;
+	text-align: center;
+}
+.topform{
+	height: 400px;
+	width: 300px;
+	display: inline-block;
+
+}
+.btform{
+	height: 400px;
+	width: 300px;
+	display: inline-block;
+	vertical-align: top;
+}
