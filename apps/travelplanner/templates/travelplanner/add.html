@@ -30,8 +30,8 @@
 		</div>
 	</nav> 
 	<div class="wrapper">
-		<h1>Add a destination</h1>
 		<form action="{% url 'add_trip' %}" method="POST">
+			<h1>Add a destination</h1>
 			{% csrf_token %}
 			Destination: <input type="text" name="destination"><br><br>
 			Description: <input type="text" name="description"><br><br>
