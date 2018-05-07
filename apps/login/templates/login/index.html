@@ -3,11 +3,21 @@
 <head>
     <title>Login and Register</title>
     {% load staticfiles %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <!-- Bootstrap -->
+          <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <!-- CSS Link -->
     <link rel="stylesheet" href="{% static 'login/css/index.css' %}" charset="utf-8"  />
 </head>
 
 <body>
+    <h1>Welcome User!</h1>
     <div class="wrapper">
 
         {% if messages %}
@@ -18,8 +28,7 @@
         </ul>
         {% endif %}
 
-        <h1>Welcome User!</h1>
-        <form class="topform" action="{% url 'register' %}" method="post">
+        <form class="lform" action="{% url 'register' %}" method="post">
             {% csrf_token %}
 
             <h3>Register</h3>
@@ -36,7 +45,7 @@
             </p>
         </form>
 
-        <form class="btform" action="{% url 'login' %}" method="post">
+        <form class="rform" action="{% url 'login' %}" method="post">
             {% csrf_token %}
             <h3>Login</h3>
             <p>Username:</p>
