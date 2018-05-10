@@ -3,11 +3,25 @@
 <head>
     <title>Login and Register</title>
     {% load staticfiles %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <!-- CSS Link -->
     <link rel="stylesheet" href="{% static 'login/css/index.css' %}" charset="utf-8"  />
 </head>
 
-<body>
+<body style="
+    background: url('static/login/img/travel.jpg'); 
+    background-repeat: no-repeat;" 
+    height="auto" 
+    width="auto"  >
     <div class="wrapper">
 
         {% if messages %}
@@ -18,7 +32,10 @@
         </ul>
         {% endif %}
 
-        <h1>Welcome User!</h1>
+        <h1>Welcome, let's plan a trip!</h1>
+
+         <p><span style="color:red">Please log in or register to set up an appointment</span></p>
+
         <form class="topform" action="{% url 'register' %}" method="post">
             {% csrf_token %}
 
@@ -48,8 +65,6 @@
             </p>
         </form>
     </div>
-    <br>
-    <p><span style="color:red">Please log in or register to set up an appointment</span></p>
 </body>
 
 </html>
