@@ -22,7 +22,7 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="{% url 'dashboard' %}">Home</a>
+				<a class="navbar-brand" href="{% url 'dashboard' %}">Dashboard</a>
 			</div>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
@@ -30,8 +30,8 @@
 		</div>
 	</nav> 
 	<div class="wrapper">
-		<h1>Add a destination</h1>
 		<form action="{% url 'add_trip' %}" method="POST">
+			<h1>Add a destination</h1>
 			{% csrf_token %}
 			Destination: <input type="text" name="destination"><br><br>
 			Description: <input type="text" name="description"><br><br>

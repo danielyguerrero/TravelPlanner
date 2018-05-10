@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Your Appointments</title>
+<<<<<<< HEAD
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load staticfiles %}
@@ -10,6 +11,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+=======
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     {% load staticfiles %}
+     <!-- Bootstrap -->
+          <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+>>>>>>> d31b524c9543f91426e64f7ad7b78a2ada86f417
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
@@ -20,19 +29,24 @@
     <script src="{% static "travelplanner/js/index.js" %}"></script>
 </head>
 <body>
-<!-- ===================    NAVBAR    ===================-->
-     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand"><h1>Welcome, {{ user.name }}!</h1></a>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">Home</a></li>
-                <li class="active"><a href="travels/add">Add Travel Plan</a></li>
-                <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
-            </ul>
-        </div>
-    </nav> 
+
+<!-- ===============    NAVBAR    ===================== -->
+
+    <div class="topnav" id="myTopnav">
+        
+        <a href="{% url 'dashboard' %}" class="active">Welcome, {{ user.name }}!</a>
+
+        <a href="travels/add">Add Travel Plan</a>
+
+        <a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout </a>
+        
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+
+    </div>
+
+    <div class="wrapper">
+
+
 <!-- ===================   END NAVBAR    ===================-->
 <div class="wrapper">
         <h4>Your Trip Schedules</h4>
@@ -80,8 +94,8 @@
                     <td>{{ trip.travel_date_from }}</td>
                     <td>{{ trip.travel_date_to }}</td>
                     <td><form action="{% url 'join_trip' trip_id=trip.id %}" class="join" method="post">
-                        {% csrf_token %}
-                        <button type="submit">Join</button>
+                    {% csrf_token %}
+                    <button type="submit">Join</button>
                     </form></td>
                 </tr>
             {% endfor %}
