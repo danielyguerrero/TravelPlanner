@@ -4,8 +4,7 @@ body {
 .wrapper{
 	text-align: center;
 }
-<<<<<<< HEAD
-.topform{
+.regform{
 	height: auto;
 	width: 230px;
 	display: inline-block;
@@ -16,7 +15,7 @@ body {
 	padding: 14px;
 
 }
-.btform{
+.logform{
 	height: auto;
 	width: 230px;
 	display: inline-block;
@@ -25,7 +24,7 @@ body {
 	border: solid black;
 	opacity: 0.8;
 	padding: 14px;
-=======
+}
 .wrapper{
 	height: auto;
 	width: auto;
@@ -50,5 +49,4 @@ h1{
 	display: inline-block;
 	vertical-align: top;
 	border: 10px solid rgba(74, 154, 223, 0.6);
->>>>>>> d31b524c9543f91426e64f7ad7b78a2ada86f417
 }

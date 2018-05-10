@@ -4,45 +4,31 @@
     <title>Login and Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load staticfiles %}
-<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-=======
     <!-- Bootstrap -->
-    
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
->>>>>>> d31b524c9543f91426e64f7ad7b78a2ada86f417
     <!-- Icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<<<<<<< HEAD
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-=======
-
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-    
->>>>>>> d31b524c9543f91426e64f7ad7b78a2ada86f417
     <!-- CSS Link -->
     <link rel="stylesheet" href="{% static 'login/css/index.css' %}" charset="utf-8"  />
 </head>
-
-<<<<<<< HEAD
 <body style="
     background: url('static/login/img/travel.jpg'); 
     background-repeat: no-repeat;" 
     height="auto" 
     width="auto"  >
-=======
 <body>
     <h1>Welcome User!</h1>
->>>>>>> d31b524c9543f91426e64f7ad7b78a2ada86f417
     <div class="wrapper">
 
         {% if messages %}
@@ -53,15 +39,11 @@
         </ul>
         {% endif %}
 
-<<<<<<< HEAD
         <h1>Welcome, let's plan a trip!</h1>
 
          <p><span style="color:red">Please log in or register to set up an appointment</span></p>
 
-        <form class="topform" action="{% url 'register' %}" method="post">
-=======
-        <form class="lform" action="{% url 'register' %}" method="post">
->>>>>>> d31b524c9543f91426e64f7ad7b78a2ada86f417
+        <form class="regform" action="{% url 'register' %}" method="post">
             {% csrf_token %}
 
             <h3>Register</h3>
@@ -78,7 +60,7 @@
             </p>
         </form>
 
-        <form class="rform" action="{% url 'login' %}" method="post">
+        <form class="logform" action="{% url 'login' %}" method="post">
             {% csrf_token %}
             <h3>Login</h3>
             <p>Username:</p>
