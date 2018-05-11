@@ -24,11 +24,13 @@
 </head>
 <body style="
     background: url('static/login/img/travel.jpg'); 
-    background-repeat: no-repeat;" 
+    background-repeat: no-repeat;
+    background-size: cover;" 
     height="auto" 
-    width="auto"  >
-<body>
-    <h1>Welcome User!</h1>
+    width="100%" >
+    <h1>Welcome, let's plan a trip!</h1>
+
+     <p><span style="color:red">Please log in or register to set up an appointment</span></p>
     <div class="wrapper">
 
         {% if messages %}
@@ -39,14 +41,10 @@
         </ul>
         {% endif %}
 
-        <h1>Welcome, let's plan a trip!</h1>
-
-         <p><span style="color:red">Please log in or register to set up an appointment</span></p>
-
         <form class="regform" action="{% url 'register' %}" method="post">
             {% csrf_token %}
 
-            <h3>Register</h3>
+            <h3>Register  <i class="fa fa-pencil" style="font-size:29px;color:#51575c"></i> </h3>
             <p>Name:</p>
             <input type="text" name="name" />
             <p>Username:</p>
@@ -62,7 +60,7 @@
 
         <form class="logform" action="{% url 'login' %}" method="post">
             {% csrf_token %}
-            <h3>Login</h3>
+            <h3>Login  <i class="fa fa-unlock-alt" style="font-size:29px;color:#51575c"></i> </h3>
             <p>Username:</p>
             <input type="text" name="username" />
             <p>Password:</p>
