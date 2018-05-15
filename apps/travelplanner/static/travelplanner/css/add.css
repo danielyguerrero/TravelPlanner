@@ -65,7 +65,8 @@ body {
 } 
 /*==================================================================================*/
 form {
-	background-color: white;
+  color: white;
+	background-color: black;
 	height: 490px;
 	width: 470px;
 	border-radius: 30px;
@@ -75,7 +76,12 @@ form {
 	margin-right: auto;
 	margin-left: auto;
 	display: inline-block;
+  opacity: .8;
+}
+input{
+  color: black;
 }
 button{
 	margin-top: 30px;
+  background-color: blue ;
 }

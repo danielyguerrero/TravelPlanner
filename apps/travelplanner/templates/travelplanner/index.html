@@ -1,106 +1,105 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Your Appointments</title>    
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% load staticfiles %}
-    <!-- Bootstrap -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-     {% load staticfiles %}
-     <!-- Bootstrap -->
-          <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-    <!-- CSS Link -->
-    <link rel="stylesheet" href="{% static 'travelplanner/css/index.css' %}" charset="utf-8"  />
-    <!-- jQuery Link -->
-    <script src="{% static "travelplanner/js/index.js" %}"></script>
-</head>
-<body>
-
-<!-- ===============    NAVBAR    ===================== -->
-
-    <div class="topnav" id="myTopnav">
-        
-        <a href="{% url 'dashboard' %}" class="active">Welcome, {{ user.name }}!</a>
-
-        <a href="travels/add">Add Travel Plan</a>
-
-        <a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout </a>
-        
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-
-    </div>
-
-    <div class="wrapper">
-
-
-<!-- ===================   END NAVBAR    ===================-->
-<div class="wrapper">
-        <h4>Your Trip Schedules</h4>
-        <div>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Destination</th>
-                        <th>Travel Start Date</th>
-                        <th>Travel End Date</th>
-                        <th>Plan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for trip in joined_trips %}
-                    <tr>
-                        <td><a href='travels/destination/{{trip.id}}'> {{ trip.destination }}</a></td>
-                        <td>{{ trip.travel_date_from }}</td>
-                        <td>{{ trip.travel_date_to }}</td>
-                        <td>{{ trip.description }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+    <head>
+        <title>Your Appointments</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load staticfiles %}
+        <!-- Bootstrap -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Icon library -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- CSS Link -->
+        <link rel="stylesheet" href="{% static 'travelplanner/css/index.css' %}" charset="utf-8"  />
+        <!-- jQuery Link -->
+        <script src="{% static "travelplanner/js/index.js" %}"></script>
+    </head>
+    <body>
+        <!-- ===============    NAVBAR    ===================== -->
+        <div class="topnav" id="myTopnav">
+            
+            <a href="{% url 'dashboard' %}" class="active">Welcome, {{ user.name }}!</a>
+            <a href="travels/add">Add Travel Plan</a>
+            <a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout </a>
+            
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
-        <br>
-        <br>
-        <br>
-        <h4>Other User's Travel Plans</h4>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Destination</th>
-                    <th>Travel Start Date</th>
-                    <th>Travel End Date</th>
-                    <th>Do You Want to Join?</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for trip in other_trips %}
-                <tr>
-                    <td>{{ trip.added_by.name }}</td>
-                    <td><a href='travels/destination/{{trip.id}}'> {{ trip.destination }}</a></td>
-                    <td>{{ trip.travel_date_from }}</td>
-                    <td>{{ trip.travel_date_to }}</td>
-                    <td><form action="{% url 'join_trip' trip_id=trip.id %}" class="join" method="post">
-                    {% csrf_token %}
-                    <button type="submit">Join</button>
-                    </form></td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-</div>
-
-</body>
-</html>
-
-
-
-
+        <div class="wrapper">
+            <!-- ===================   END NAVBAR    ===================-->
+            <div class="wrapper">
+                <h4>Your Trip Schedules</h4>
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Destination</th>
+                                <th>Travel Start Date</th>
+                                <th>Travel End Date</th>
+                                <th>Plan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for trip in joined_trips %}
+                                <tr>
+                                    <td>
+                                        <img src="/static/travelplanner/img/logo.png" height="50" width="50">
+                                        <a href='travels/destination/{{trip.id}}'> {{ trip.destination }}</a>
+                                    </td>
+                                    <td>{{ trip.travel_date_from }}</td>
+                                    <td>{{ trip.travel_date_to }}</td>
+                                    <td>
+                                        <i class="far fa-sticky-note" style="font-size:25px;"></i>
+                                        {{ trip.description }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <br>
+                <br>
+                <h4>Other User's Travel Plans</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Destination</th>
+                            <th>Travel Start Date</th>
+                            <th>Travel End Date</th>
+                            <th>Do You Want to Join?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for trip in other_trips %}
+                            <tr>
+                                <td>
+                                    <i class="far fa-user" style="font-size:25px;"></i>
+                                    {{ trip.added_by.name }}
+                                </td>
+                                <td>
+                                    <img src="/static/travelplanner/img/logo.png" height="50" width="50">
+                                    <a href='travels/destination/{{trip.id}}'> {{ trip.destination }}</a>
+                                </td>
+                                <td>{{ trip.travel_date_from }}</td>
+                                <td>{{ trip.travel_date_to }}</td>
+                                <td>
+                                    <i class="fas fa-calendar-plus" style="font-size:29px;color:#51575c"></i>
+                                    <form action="{% url 'join_trip' trip_id=trip.id %}" class="join" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit">Join</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </body>
+    </html>
+    <!-- <i class="fa fa-pencil" style="font-size:29px;color:#51575c"></i>
+    <i class="fas fa-calendar-plus"></i> -->

@@ -1,75 +1,63 @@
 <html>
-
-<head>
-    <title>Login and Register</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% load staticfiles %}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Bootstrap -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- Icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-    <!-- CSS Link -->
-    <link rel="stylesheet" href="{% static 'login/css/index.css' %}" charset="utf-8"  />
-</head>
-<body style="
-    background: url('static/login/img/travel.jpg'); 
-    background-repeat: no-repeat;
-    background-size: cover;" 
-    height="auto" 
-    width="100%" >
-    <h1>Welcome, let's plan a trip!</h1>
-
-     <p><span style="color:red">Please log in or register to set up an appointment</span></p>
-    <div class="wrapper">
-
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-
-        <form class="regform" action="{% url 'register' %}" method="post">
-            {% csrf_token %}
-
-            <h3>Register  <i class="fa fa-pencil" style="font-size:29px;color:#51575c"></i> </h3>
-            <p>Name:</p>
-            <input type="text" name="name" />
-            <p>Username:</p>
-            <input type="text" name="username" />
-            <p>Password:</p>
-            <input type="password" name="password" />
-            <p>Confirm PW:</p>
-            <input type="password" name="password_confirmation" />
-            <p class="btnpar">
-                <input type="submit" value="Register" />
-            </p>
-        </form>
-
-        <form class="logform" action="{% url 'login' %}" method="post">
-            {% csrf_token %}
-            <h3>Login  <i class="fa fa-unlock-alt" style="font-size:29px;color:#51575c"></i> </h3>
-            <p>Username:</p>
-            <input type="text" name="username" />
-            <p>Password:</p>
-            <input type="password" name="password" />
-            <p class="btnpar">
-                <input type="submit" value="Login" />
-            </p>
-        </form>
-    </div>
-</body>
-
+    <head>
+        <title>Login and Register</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load staticfiles %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <!-- Icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- CSS Link -->
+        <link rel="stylesheet" href="{% static 'login/css/index.css' %}" charset="utf-8"  />
+    </head>
+    <body style="
+        background: url('static/login/img/travel.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;"
+        height="auto"
+        width="100%" >
+        <h1>Welcome, let's plan a trip!</h1>
+        <p><span style="color:red">Please log in or register to set up an appointment</span></p>
+        <div class="wrapper">
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <form class="regform" action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                <h3>Register  <i class="fa fa-pencil" style="font-size:29px;color:#51575c"></i> </h3>
+                <p>Name:</p>
+                <input type="text" name="name" />
+                <p>Username:</p>
+                <input type="text" name="username" />
+                <p>Password:</p>
+                <input type="password" name="password" />
+                <p>Confirm PW:</p>
+                <input type="password" name="password_confirmation" />
+                <p class="btnpar">
+                    <input type="submit" value="Register" />
+                </p>
+            </form>
+            <form class="logform" action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <h3>Login  <i class="fa fa-unlock-alt" style="font-size:29px;color:#51575c"></i> </h3>
+                <p>Username:</p>
+                <input type="text" name="username" />
+                <p>Password:</p>
+                <input type="password" name="password" />
+                <p class="btnpar">
+                    <input type="submit" value="Login" />
+                </p>
+            </form>
+        </div>
+    </body>
 </html>
