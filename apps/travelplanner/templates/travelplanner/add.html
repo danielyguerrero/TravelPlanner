@@ -1,51 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Add a Destination</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% load staticfiles %}
-        <!-- Bootstrap -->
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!-- Icon library -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- CSS Link -->
-    <link rel="stylesheet" href="{% static 'travelplanner/css/add.css' %}" charset="utf-8"  />
-</head>
-<body style="
-        background: url('/static/travelplanner/img/plan.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;"
-        height="auto"
-        width="100%" >
-	<!-- =========    navbar    ============ -->
-
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="{% url 'dashboard' %}">Dashboard</a>
+	<head>
+		<title>Add a Destination</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{% load staticfiles %}
+		<!-- Bootstrap -->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- Icon library -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- CSS Link -->
+		<link rel="stylesheet" href="{% static 'travelplanner/css/add.css' %}" charset="utf-8"  />
+	</head>
+	<body style="
+		background: url('/static/travelplanner/img/plan.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;"
+		height="auto"
+		width="100%" >
+		<!-- =========    navbar    ============ -->
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="{% url 'dashboard' %}">Dashboard</a>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
+				</ul>
 			</div>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
-			</ul>
+		</nav>
+		<div class="wrapper">
+			<form action="{% url 'add_trip' %}" method="POST">
+				<h1>Add a destination</h1>
+				{% csrf_token %}
+				Destination: <input type="text" name="destination"><br><br>
+				Description: <input type="text" name="description"><br><br>
+				Travel Date From: <input type="date" name="travel_date_from"><br><br>
+				Travel Date To: <input type="date" name="travel_date_to"><br><br>
+				<button type="submit">Add</button>
+			</form>
+			
 		</div>
-	</nav> 
-	<div class="wrapper">
-		<form action="{% url 'add_trip' %}" method="POST">
-			<h1>Add a destination</h1>
-			{% csrf_token %}
-			Destination: <input type="text" name="destination"><br><br>
-			Description: <input type="text" name="description"><br><br>
-			Travel Date From: <input type="date" name="travel_date_from"><br><br>
-			Travel Date To: <input type="date" name="travel_date_to"><br><br>
-			<button type="submit">Add</button>
-		</form>
-		
-	</div>
-
-</body>
+	</body>
 </html>
